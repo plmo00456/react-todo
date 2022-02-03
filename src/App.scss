@@ -1,0 +1,36 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  & div {
+    //border: 1px solid red;
+  }
+  & .layout.header {
+    height: 6vh;
+  }
+  & .outer-box {
+    height: 94vh;
+    display: flex;
+    & .main {
+      width: 75%;
+      height: 100%;
+    }
+    & .layout.login {
+      width: 100%;
+    }
+    & .layout.left {
+      width: 25%;
+      height: 100%;
+      & > .project > .list {
+        height: 88vh;
+      }
+      & > .project > .add {
+        height: 5vh;
+      }
+    }
+    & .layout.right {
+      display: none;
+    }
+  }
+}

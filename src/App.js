@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
+import Main from "./page/Main/Main";
+import Login from "./page/Login/Login";
+import LayoutHeader from "./page/layout/Header";
+import LayoutLeft from "./page/layout/Left";
+import LayoutRight from "./page/layout/Right";
+import { useEffect } from "react";
+
+const App = () => {
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "viewport";
+    meta.content =
+      "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover";
+    document.getElementsByTagName("head")[0].appendChild(meta);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="wrap">
+        <LayoutHeader />
+        <div className="outer-box">
+          <LayoutLeft />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+          <LayoutRight />
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
